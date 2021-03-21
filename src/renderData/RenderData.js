@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 
 export default class RenderData extends Component {
     state = {
-        status: false
+        status: false,
+        data : {
+            id: 1,
+            name: 'nguyen van a',
+            age: 10
+        }
     }
     status = false;
     data = {
