@@ -1,9 +1,9 @@
 import React from 'react'
-let namef = {
-    title: 'a',
-    age: 2,
-    content:"đâfafsfdasfaf"
-}
+// const namef = {
+//     title: 'a',
+//     age: 2,
+//     content:"đâfafsfdasfaf"
+// }
 export default function DataBuildingFC() {
     let  name = {
         title: 'asss',
