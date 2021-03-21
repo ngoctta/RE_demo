@@ -1,14 +1,18 @@
-import logo from "./logo.svg";
 import "./App.css";
-import HeaderDemo from "./component/demo1/Header";
-import HeaderFC from "./component/demo1/HeaderFC";
-import Layout from "./ChiaLayout/Layout";
-import BaiTapThucHanhChiaLayout from "./BaiTapThucHanhChiaLayout/BaiTapThucHanhChiaLayout";
+import BaiTapThucHanhChiaLayout from "./component/BaiTapThucHanhChiaLayout/BaiTapThucHanhChiaLayout";
+import DataBuilding from "./databuilding/DataBuilding";
+import DataBuildingFC from "./databuilding/DataBuildingFC";
+import HandleEvent from "./handleEvent/HandleEvent";
+import HandleEventFC from "./handleEvent/HandleEventFC";
 
 function App() {
   return (
     <div className="App">
-      <BaiTapThucHanhChiaLayout/>
+      {/* <BaiTapThucHanhChiaLayout/> */}
+      {/* <DataBuilding></DataBuilding> */}
+      {/* <DataBuildingFC></DataBuildingFC> */}
+      <HandleEvent></HandleEvent>
+      <HandleEventFC></HandleEventFC>
     </div>
   );
 }
