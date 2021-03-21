@@ -1,5 +1,6 @@
 import "./App.css";
-import ChooseCarColor from "./chooseCarColor/ChooseCarColor";
+// import ChooseCarColor from "./chooseCarColor/ChooseCarColor";
+import ChooseFilm from "./chooseFilm/ChooseFilm";
 // import BaiTapThucHanhChiaLayout from "./component/BaiTapThucHanhChiaLayout/BaiTapThucHanhChiaLayout";
 // import DataBuilding from "./databuilding/DataBuilding";
 // import DataBuildingFC from "./databuilding/DataBuildingFC";
@@ -16,7 +17,8 @@ function App() {
       {/* <HandleEvent></HandleEvent>
       <HandleEventFC></HandleEventFC> */}
       {/* <RenderData></RenderData> */}
-      <ChooseCarColor></ChooseCarColor>
+      {/* <ChooseCarColor></ChooseCarColor> */}
+      <ChooseFilm></ChooseFilm>
     </div>
   );
 }
