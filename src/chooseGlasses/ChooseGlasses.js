@@ -22,10 +22,25 @@ export default class ChooseGlasses extends Component {
             return arr[0].url;
         }
     }
-    render() {
     
+    render() {  
+        let animationGlasses = `@keyframes animation${Date.now()}{
+                from {
+                    width: 0%;
+                }
+                to {
+                    width:  53%;
+                }
+            }`;
+        let style_animation = {
+            animationName: "animation" + Date.now(),
+            animationDuration: '1s'
+        }
         return (
             <div style={{background: "url(./glassesImage/background.jpg) no-repeat", backgroundSize: "cover", minHeight: "100vh"}}>
+                <style>
+                    { animationGlasses }
+                </style>
                 <div style={{background: "rgba(0,0,0,0.5)"}}>
                 <div className="p-4 text-center text-white" style={{background: "rgba(0,0,0,0.5)"}}>TRY GLASSES APP ONLINE</div>
                     <div className="container" >
@@ -37,7 +52,7 @@ export default class ChooseGlasses extends Component {
                                         <b>FENDI F8750</b>
                                         Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                                     </div>
-                                    <div className={style.glasses_model}>
+                                    <div className={style.glasses_model} >
                                         <img src="./glassesImage/v1.png" className='img-fluid d-inline rounded-top' alt=""/>
                                     </div>
                                 </div>
@@ -45,8 +60,8 @@ export default class ChooseGlasses extends Component {
                             <div className="col-md-4 col-6">
                                 <div className={style.model}>
                                     <img src="./glassesImage/model.jpg" className="img-fluid rounded-top w-100" alt=""/>
-                                    <div className={style.glasses_model}>
-                                        <img src={this.getGlassesActive()} className='img-fluid d-inline rounded-top' alt=""/>
+                                    <div className={style.glasses_model} >
+                                        <img src={this.getGlassesActive()} className='img-fluid d-inline rounded-top' alt="" style={style_animation} />
                                     </div>
                                 </div>
                             </div>
