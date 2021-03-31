@@ -26,32 +26,34 @@ export default class ChooseGlasses extends Component {
     
         return (
             <div style={{background: "url(./glassesImage/background.jpg) no-repeat", backgroundSize: "cover", minHeight: "100vh"}}>
+                <div style={{background: "rgba(0,0,0,0.5)"}}>
                 <div className="p-4 text-center text-white" style={{background: "rgba(0,0,0,0.5)"}}>TRY GLASSES APP ONLINE</div>
-                <div className="container">
-                    <div className="row justify-content-around my-4">
-                        <div className="col-md-4 col-6">
-                            <div className={style.model}>
-                                <img src="./glassesImage/model.jpg" className="img-fluid rounded-top w-100" alt=""/>
-                                <div className={style.content_model}>
-                                    <b>FENDI F8750</b>
-                                    Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    <div className="container" >
+                        <div className="row justify-content-around my-4">
+                            <div className="col-md-4 col-6">
+                                <div className={style.model}>
+                                    <img src="./glassesImage/model.jpg" className="img-fluid rounded-top w-100" alt=""/>
+                                    <div className={style.content_model}>
+                                        <b>FENDI F8750</b>
+                                        Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                    </div>
+                                    <div className={style.glasses_model}>
+                                        <img src="./glassesImage/v1.png" className='img-fluid d-inline rounded-top' alt=""/>
+                                    </div>
                                 </div>
-                                <div className={style.glasses_model}>
-                                    <img src="./glassesImage/v1.png" className='img-fluid d-inline rounded-top' alt=""/>
+                            </div>
+                            <div className="col-md-4 col-6">
+                                <div className={style.model}>
+                                    <img src="./glassesImage/model.jpg" className="img-fluid rounded-top w-100" alt=""/>
+                                    <div className={style.glasses_model}>
+                                        <img src={this.getGlassesActive()} className='img-fluid d-inline rounded-top' alt=""/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 col-6">
-                            <div className={style.model}>
-                                <img src="./glassesImage/model.jpg" className="img-fluid rounded-top w-100" alt=""/>
-                                <div className={style.glasses_model}>
-                                    <img src={this.getGlassesActive()} className='img-fluid d-inline rounded-top' alt=""/>
-                                </div>
-                            </div>
+                        <div className="row bg-light p-3">
+                            { this.renderListGlasses() }
                         </div>
-                    </div>
-                    <div className="row bg-light p-3">
-                        { this.renderListGlasses() }
                     </div>
                 </div>
             </div>
