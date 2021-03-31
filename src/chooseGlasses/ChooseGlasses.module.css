@@ -1,0 +1,19 @@
+.model {
+  position: relative;
+}
+.content_model {
+  position: absolute;
+  bottom: 0;
+  padding: 8px;
+  background-color: rgb(255 115 0 / 50%);
+}
+.glasses_model {
+  position: absolute;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  top: 26%;
+}
+.glasses_model img {
+  width: 53%;
+}
