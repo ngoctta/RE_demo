@@ -1,84 +1,90 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import "./style.css";
+import wheels from './wheels.json';
+import features from './arrayFeatures.json';
+import xoay from 'js-cloudimage-360-view';
 
 export default class ChooseCarColor extends Component {
     state = {
-        colorId: 1
+        idWheel: 1,
+        idCar: 1
     }
-    data = [
-        {
-            id: 1,
-            image: "https://salt.tikicdn.com/cache/w444/ts/product/27/55/4e/54cc3939b3d58d5a6e9aa65c15c65d20.jpg",
-            name: "Bạc",
-            price: "1000"
-        },
-        {
-            id: 2,
-            image: "https://salt.tikicdn.com/cache/w444/ts/product/b0/39/57/a5c7b46a18cd2e077fb2d805ed600e67.jpg",
-            name: "Xanh Dương",
-            price: "2000"
-        },
-        {
-            id: 3,
-            image: "https://salt.tikicdn.com/cache/w444/ts/product/14/f0/60/1ceceef2a9a64bef35e415ab1c3635e0.jpg",
-            name: "Vàng",
-            price: "1200"
-        },
-        {
-            id: 4,
-            image: "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg",
-            name: "Xám",
-            price: "1100"
-        },
+    renderColor = () => {
+        return features.map((item, index) => {
+            return (
+                 <div className={`border mb-3 ${ this.state.idCar == item.id ? " border-warning" : ""}`} key={index}>
+                    <div className="d-flex p-2" style={{ cursor: "pointer"}} key={ item.id } onClick={() => {this.handleChooseColor(item.id)}}>
+                        <div style={{ width: "60px", marginRight: "10px"}}>
+                            <img src={item.img} className="img-fluid w-100"/>
+                        </div>
+                        <div>
+                            <h4>{item.title}</h4>
+                            <p>{item.type}</p>
+                        </div>
+                    </div>
+                </div>
+            );
+        })
+    };
+    handleChooseColor = (id) => {
+        this.setState({idCar: id});
+    }
+    handleChooseWheels = (id) => {
+        this.setState({idWheel: id});
+    }
+    renderWheels = () => {
+        return wheels.map((item, index) => {
+            return ( 
+            <div className={`border mb-3 ${ this.state.idWheel == item.idWheel ? " border-warning" : ""}`} key={index}>
+                <div className="d-flex p-2" style={{ cursor: "pointer"}} onClick={() => {this.handleChooseWheels(item.idWheel)}}>
+                    <div style={{ width: "60px", flexShrink: 0, marginRight: "10px"}}>
+                        <img src={ item.img } className="img-fluid w-100"/>
+                    </div>
+                    <div>
+                        <p><b>{ item.title }</b></p>
+                        <p className="text-success">{ item.price }$</p>
+                    </div>
+                </div>
+            </div>)
+        })
+    }
+    getFolderImage = () => {
+        let car = features.filter(item => item.id == this.state.idCar)[0];
+        let wheelItem = car.wheels.filter(item => item.idWheel == this.state.idWheel)[0];
+        return "./images/" + wheelItem.srcImg;
+    }
 
-    ];
-    handleClickItemColor = (id) => {
-        this.setState({colorId: id});
-    };
-    renderItemColor = (id, name) => {
-        return <button key={id} onClick={() => { this.handleClickItemColor(id) }} className={`list-group-item list-group-item-action list-group-item-primary ${this.state.colorId === id ? "active" : ""}`} >{name}</button>
-    };
-    renderListColor = () => {
-        let listProduct = [];
-        let dataProduct = this.data;
-         for (var i=0; i < dataProduct.length; i++) {
-            listProduct.push(this.renderItemColor(dataProduct[i].id, dataProduct[i].name));
-        } 
-        return (
-            <div className="list-group">
-                { listProduct }
-            </div>
-        )
-    }
-    
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8">
-                        <img src={this.data[this.state.colorId - 1].image} className="img-fluid rounded-top" alt="" />
-                    </div>
-                    <div className="col-md-4">
-                        { this.renderListColor() }
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-8">
-                        <table className="table table-border mt-3 ">
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Color</th>
-                                    <td>{this.data[this.state.colorId].name}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Price</th>
-                                    <td>{this.data[this.state.colorId].price}$</td>
-                                </tr>
-                            </tbody>
-                        </table>
+           <div className="container my-4">
+               <div className="row">
+                    <div className="col-md-7">
+                        <div className="border">
+                            {/* <div className="cloudimage-360" data-folder= data-filename="civic-{index}.jpg" data-amount={8} /> */}
+                        <div className="cloudimage-360" data-folder="./images/images-black/images-black-1/" data-filename="civic-{index}.jpg" data-amount={8} />
 
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div className="col-md-5">
+                        <div className="card mb-3">
+                            <div className="card-header">
+                                Exterior Color
+                            </div>
+                            <div className="card-body">
+                                { this.renderColor()}
+                            </div>
+                        </div>
+                        <div className="card">
+                            <div className="card-header">
+                                Wheels
+                            </div>
+                            <div className="card-body">
+                              { this.renderWheels() }
+                            </div>
+                        </div>
+                    </div>
+               </div>
+           </div>
         )
     }
 }
